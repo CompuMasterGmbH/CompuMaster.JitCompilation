@@ -29,6 +29,7 @@ Public NotInheritable Class CompileException
                     Return err
                 End If
             Next
+            Return Nothing
         End Get
     End Property
 

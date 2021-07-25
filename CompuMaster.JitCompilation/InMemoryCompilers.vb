@@ -142,7 +142,7 @@ Namespace CompuMaster.JitCompilation
             '   Return param1
             'End Function
             '---------------------------------------
-            Dim ImportCommands As String
+            Dim ImportCommands As String = Nothing
             For Each importNamespace As String In [imports]
                 ImportCommands &= "Imports " & importNamespace & System.Environment.NewLine
             Next

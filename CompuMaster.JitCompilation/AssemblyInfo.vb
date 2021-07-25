@@ -6,7 +6,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("CompuMaster GmbH")> 
 <Assembly: AssemblyProduct("CompuMaster Tools")>
-<Assembly: AssemblyCopyright("2008-2013,2019 CompuMaster GmbH")>
+<Assembly: AssemblyCopyright("2008-2021 CompuMaster GmbH")>
 <Assembly: AssemblyTrademark("CompuMaster")> 
 <Assembly: CLSCompliant(True)> 
 <Assembly: ComVisibleAttribute(False)> 
@@ -14,5 +14,5 @@ Imports System.Runtime.InteropServices
 
 <Assembly: Guid("FDE425FC-D734-4747-A1D8-082356335D53")>
 
-<Assembly: AssemblyVersion("2019.11.18.100")>
+<Assembly: AssemblyVersion("2021.07.25.100")>
 <Assembly: AssemblyDelaySign(False)>

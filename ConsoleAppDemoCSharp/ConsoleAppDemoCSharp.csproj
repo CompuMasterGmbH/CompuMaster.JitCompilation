@@ -45,9 +45,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CompuMaster.JitCompilation\CompuMaster.JitCompilation.VS2013.vbproj">
+    <ProjectReference Include="..\CompuMaster.JitCompilation\CompuMaster.JitCompilation.vbproj">
       <Project>{2287cde0-01df-496d-bf8f-bf243229cf19}</Project>
-      <Name>CompuMaster.JitCompilation.VS2013</Name>
+      <Name>CompuMaster.JitCompilation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

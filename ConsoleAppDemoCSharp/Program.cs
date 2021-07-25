@@ -17,7 +17,7 @@ namespace ConsoleAppDemoCSharp
         {
             CompuMaster.JitCompilation.BaseInMemoryCompiler cscInMemory = 
                 new CompuMaster.JitCompilation.CSharpInMemoryCompiler();
-            string src = "public class TestClass {public static string Answer() {return \"Hello World!\";}}";
+            string src = "public class TestClass {public static string Answer() {return \"Hello World from inside of a dynamically created assembly!\";}}";
             CompuMaster.JitCompilation.CompileResults cResult = cscInMemory.Compile(src, false);
             System.Console.WriteLine((string)cResult.Invoke("TestClass", "Answer", null)); // will result: "Hello World!"
         }
@@ -25,12 +25,12 @@ namespace ConsoleAppDemoCSharp
         static void CompileWithSuccess(string[] args)
         {
             CompuMaster.JitCompilation.BaseInMemoryCompiler cscInMemory = new CompuMaster.JitCompilation.CSharpInMemoryCompiler();
-            string src = "public class CmTestCompiler {public static string Answer() {return \"Hello World!\";}}";
+            string src = "public class CmTestCompiler {public static string Answer() {return \"Hello World from inside of a dynamically created assembly!\";}}";
             CompuMaster.JitCompilation.CompileResults cResult = cscInMemory.Compile(src, false);
             if ((cResult.CompilerErrors != null) && (cResult.CompilerErrors.HasErrors == false))
             {
                 System.Console.WriteLine("Compiled successfully, this is the result:");
-                System.Console.WriteLine((string)cResult.Invoke("CmTestCompiler", "Answer", null)); // will result: "Hello World!"
+                System.Console.WriteLine((string)cResult.Invoke("CmTestCompiler", "Answer", null)); // will result: "Hello World from inside of a dynamically created assembly!"
             }
             else
             {
@@ -45,12 +45,12 @@ namespace ConsoleAppDemoCSharp
         static void CompileWithError(string[] args)
         {
             CompuMaster.JitCompilation.BaseInMemoryCompiler cscInMemory = new CompuMaster.JitCompilation.CSharpInMemoryCompiler();
-            string src = "public class CmTestCompiler {public static string Answer() {return \"\"Hello World!\";}}";
+            string src = "public class CmTestCompiler {public static string Answer() {return \"\"Hello World from inside of a dynamically created assembly!\";}}";
             CompuMaster.JitCompilation.CompileResults cResult = cscInMemory.Compile(src, false);
             if ((cResult.CompilerErrors != null) && (cResult.CompilerErrors.HasErrors == false))
             {
                 System.Console.WriteLine("Compiled successfully, this is the result:");
-                System.Console.WriteLine((string)cResult.Invoke("CmTestCompiler", "Answer", null)); // will result: "Hello World!"
+                System.Console.WriteLine((string)cResult.Invoke("CmTestCompiler", "Answer", null)); // will result: "Hello World from inside of a dynamically created assembly!"
             }
             else
             {
