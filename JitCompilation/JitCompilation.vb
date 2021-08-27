@@ -59,9 +59,9 @@ Namespace CompuMaster.JitCompilation
             '}
             '---------------------------------------
             Dim MyTempClassCode As String =
-                "public class CompuMasterJitCompileTempClass" & vbNewLine &
-                "{" & vbNewLine &
-                functionCode & vbNewLine &
+                "public class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
+                "{" & System.Environment.NewLine &
+                functionCode & System.Environment.NewLine &
                 "}"
 
             Return CompileCSharp(MyTempClassCode, False)
@@ -113,10 +113,10 @@ Namespace CompuMaster.JitCompilation
             'End Function
             '---------------------------------------
             Dim MyTempClassCode As String =
-                "Public Class CompuMasterJitCompileTempClass" & vbNewLine &
-                vbNewLine &
-                functionCode & vbNewLine &
-                vbNewLine &
+                "Public Class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
+                System.Environment.NewLine &
+                functionCode & System.Environment.NewLine &
+                System.Environment.NewLine &
                 "End Class"
             Return CompileVbNet(MyTempClassCode, False)
         End Function
@@ -210,9 +210,9 @@ Namespace CompuMaster.JitCompilation
             '}
             '---------------------------------------
             Dim MyTempClassCode As String =
-                "public class CompuMasterJitCompileTempClass" & vbNewLine &
-                "{" & vbNewLine &
-                functionCode & vbNewLine &
+                "public class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
+                "{" & System.Environment.NewLine &
+                functionCode & System.Environment.NewLine &
                 "}"
 
             Return CompileCSharp(MyTempClassCode, outputAssemblyPath)
@@ -292,10 +292,10 @@ Namespace CompuMaster.JitCompilation
             'End Function
             '---------------------------------------
             Dim MyTempClassCode As String =
-                "Public Class CompuMasterJitCompileTempClass" & vbNewLine &
-                vbNewLine &
-                functionCode & vbNewLine &
-                vbNewLine &
+                "Public Class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
+                System.Environment.NewLine &
+                functionCode & System.Environment.NewLine &
+                System.Environment.NewLine &
                 "End Class"
             Return CompileVbNet(MyTempClassCode, outputAssemblyPath)
         End Function

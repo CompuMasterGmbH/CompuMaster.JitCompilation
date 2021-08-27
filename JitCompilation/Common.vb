@@ -137,8 +137,8 @@ Namespace CompuMaster.JitCompilation
             If debugMode Then
                 oCParams.CompilerOptions &= " /debug"
             End If
-            Dim importsParameter As String = Strings.Join([imports], ",")
-            If Trim(importsParameter) <> Nothing Then
+            Dim importsParameter As String = String.Join(",", [imports])
+            If importsParameter <> Nothing AndAlso importsParameter.Trim <> Nothing Then
                 oCParams.CompilerOptions &= " /imports:" & importsParameter
             End If
             oCParams.IncludeDebugInformation = debugMode

@@ -5,8 +5,13 @@ Imports System.Security.Permissions
 Imports System.Globalization
 Imports System.CodeDom.Compiler
 
-<Serializable(), AspNetHostingPermission(SecurityAction.LinkDemand, Level:=AspNetHostingPermissionLevel.Minimal)> _
+#If NETFRAMEWORK Then
+<Serializable(), AspNetHostingPermission(SecurityAction.LinkDemand, Level:=AspNetHostingPermissionLevel.Minimal)> 
 Public NotInheritable Class CompileException
+#Else
+<Serializable()>
+Public NotInheritable Class CompileException
+#End If
     Inherits Exception
 
     Private _results As CompilerResults

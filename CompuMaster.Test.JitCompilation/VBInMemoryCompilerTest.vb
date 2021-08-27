@@ -1,5 +1,6 @@
 Imports NUnit.Framework
 Imports CompuMaster.JitCompilation
+Imports CompuMaster.VisualBasicCompatibility
 
 Namespace CompuMaster.Tests.JitCompilation
     <TestFixture()> Public Class VBInMemoryCompiler
@@ -8,10 +9,10 @@ Namespace CompuMaster.Tests.JitCompilation
 
         <Test()> Public Sub compileCode_with_debug()
             'Some test code
-            Dim src As String = "Public Class CmTestCompiler" & vbNewLine & _
-            "Public Function Answer() As String " & vbNewLine & _
-            "Return ""Hello World!"" " & vbNewLine & _
-            "End Function " & vbNewLine & _
+            Dim src As String = "Public Class CmTestCompiler" & ControlChars.CrLf &
+            "Public Function Answer() As String " & ControlChars.CrLf &
+            "Return ""Hello World!"" " & ControlChars.CrLf &
+            "End Function " & ControlChars.CrLf &
             "End Class"
 
             Dim cResult As CompileResults = myTestCompiler.Compile(src, True)
@@ -23,10 +24,10 @@ Namespace CompuMaster.Tests.JitCompilation
 
         <Test()> Public Sub compileCode_without_debug()
             'Some test code
-            Dim src As String = "Public Class CmTestCompiler" & vbNewLine & _
-            "Public Function Answer() As String " & vbNewLine & _
-            "Return ""Hello World!"" " & vbNewLine & _
-            "End Function " & vbNewLine & _
+            Dim src As String = "Public Class CmTestCompiler" & ControlChars.CrLf &
+            "Public Function Answer() As String " & ControlChars.CrLf &
+            "Return ""Hello World!"" " & ControlChars.CrLf &
+            "End Function " & ControlChars.CrLf &
             "End Class"
 
             Dim cResult As CompileResults = myTestCompiler.Compile(src, False)
@@ -40,10 +41,10 @@ Namespace CompuMaster.Tests.JitCompilation
 
         <Test()> Public Sub compileCode_with_debug_and_parameters_mainmethod()
             'Some test code
-            Dim src As String = "Public Class CmTestCompiler" & vbNewLine & _
-            "Public Function Main(country as string) As String " & vbNewLine & _
-            "Return ""Hello "" & country & ""!"" " & vbNewLine & _
-            "End Function " & vbNewLine & _
+            Dim src As String = "Public Class CmTestCompiler" & ControlChars.CrLf &
+            "Public Function Main(country as string) As String " & ControlChars.CrLf &
+            "Return ""Hello "" & country & ""!"" " & ControlChars.CrLf &
+            "End Function " & ControlChars.CrLf &
             "End Class"
 
             Dim ExecutionResult As Object = myTestCompiler.ExecuteClassWithMainMethod(src, New String() {}, New String() {}, True, "CmTestCompiler", "Germany")
@@ -53,10 +54,10 @@ Namespace CompuMaster.Tests.JitCompilation
 
         <Test()> Public Sub compileCode_with_debug_and_parameters()
             'Some test code
-            Dim src As String = "Public Class CmTestCompiler" & vbNewLine & _
-            "Public Function Answer(country as string) As String " & vbNewLine & _
-            "Return ""Hello "" & country & ""!"" " & vbNewLine & _
-            "End Function " & vbNewLine & _
+            Dim src As String = "Public Class CmTestCompiler" & ControlChars.CrLf &
+            "Public Function Answer(country as string) As String " & ControlChars.CrLf &
+            "Return ""Hello "" & country & ""!"" " & ControlChars.CrLf &
+            "End Function " & ControlChars.CrLf &
             "End Class"
 
             Dim ExecutionResult As Object = myTestCompiler.ExecuteClassWithMethod(src, New String() {}, New String() {}, True, "CmTestCompiler", "Answer", "Germany")
@@ -66,10 +67,10 @@ Namespace CompuMaster.Tests.JitCompilation
 
         <Test()> Public Sub compileCode_with_debug_and_parameters_static()
             'Some test code
-            Dim src As String = "Public  Class CmTestCompiler" & vbNewLine & _
-            "Public Shared Function Answer(country as string) As String " & vbNewLine & _
-            "Return ""Hello "" & country & ""!"" " & vbNewLine & _
-            "End Function " & vbNewLine & _
+            Dim src As String = "Public  Class CmTestCompiler" & ControlChars.CrLf &
+            "Public Shared Function Answer(country as string) As String " & ControlChars.CrLf &
+            "Return ""Hello "" & country & ""!"" " & ControlChars.CrLf &
+            "End Function " & ControlChars.CrLf &
             "End Class"
 
             Dim ExecutionResult As Object = myTestCompiler.ExecuteClassWithMethod(src, New String() {}, New String() {}, True, "CmTestCompiler", "Answer", "Germany")
