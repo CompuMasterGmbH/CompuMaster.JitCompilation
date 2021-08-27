@@ -46,9 +46,12 @@ jobs:
             - name: Build
               run: dotnet build --configuration=${{env.BUILD_CONFIGURATION}} --no-restore
 
+            #- name: Pack binaries
+            #  run: |
+            #      (cd ${{env.BUILD_OUTPUT_BASEDIR}}/${{env.BUILD_CONFIGURATION}} && zip $OLDPWD/bin.zip -r .)
+
             - name: Pack binaries
-              run: |
-                  (cd ${{env.BUILD_OUTPUT_BASEDIR}}/${{env.BUILD_CONFIGURATION}} && zip $OLDPWD/bin.zip -r .)
+              run: Compress-Archive -DestinationPath bin.zip ${{env.BUILD_OUTPUT_BASEDIR}}/${{env.BUILD_CONFIGURATION}}
 
             - name: Publish binaries
               uses: softprops/action-gh-release@v1
