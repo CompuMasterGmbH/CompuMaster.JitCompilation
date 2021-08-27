@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDemoCSharp", "Con
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompuMaster.JitCompilation", "JitCompilation\CompuMaster.JitCompilation.vbproj", "{091A640F-BBB7-4529-8044-71BFCABCAC55}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompuMaster.Test.JitCompilation", "CompuMaster.Test.JitCompilation\CompuMaster.Test.JitCompilation.vbproj", "{CC9A59D1-C6D2-4A36-8DA4-451C77139CB1}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompuMaster.Test.JitCompilation", "Test.JitCompilation\CompuMaster.Test.JitCompilation.vbproj", "{CC9A59D1-C6D2-4A36-8DA4-451C77139CB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

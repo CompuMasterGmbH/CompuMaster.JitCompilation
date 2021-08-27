@@ -23,7 +23,7 @@ env:
     # Name of build project which creates required output for packaging/deployment
     BUILD_PROJECT: CompuMaster.JitCompilation/CompuMaster.JitCompilation.vbproj
     # Name of directory (e.g. "bin") containing the subdirectory (e.g. "CI_CD") with all output files (*.dll)
-    BUILD_OUTPUT_BASEDIR: CompuMaster.JitCompilation/bin
+    BUILD_OUTPUT_BASEDIR: JitCompilation/bin
 
 jobs:
     publish:
