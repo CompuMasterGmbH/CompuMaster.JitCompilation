@@ -10,9 +10,9 @@
     <Company>CompuMaster GmbH</Company>
     <Copyright>2008-2021 CompuMaster GmbH</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://www.nuget.org/packages/CompuMaster.Data/</PackageProjectUrl>
+    <PackageProjectUrl>https://www.nuget.org/packages/CompuMaster.JitCompilation/</PackageProjectUrl>
     <PackageIcon>logo_64x64.png</PackageIcon>
-    <RepositoryUrl>https://github.com/CompuMasterGmbH/CompuMaster.Data.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/CompuMasterGmbH/CompuMaster.JitCompilation.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags> CompuMaster Tools Compile Compiler JitCompilation CodeDom</PackageTags>
     <PackageIconUrl />
