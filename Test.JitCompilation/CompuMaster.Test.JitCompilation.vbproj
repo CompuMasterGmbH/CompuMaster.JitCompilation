@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <RootNamespace></RootNamespace>
-	  <TargetFrameworks>netcoreapp3.1;net6.0;net48;net461</TargetFrameworks>
+	  <TargetFrameworks>netcoreapp3.1;net8.0;net48;net461</TargetFrameworks>
 	  <AssemblyName>CompuMaster.Test.JitCompilation</AssemblyName>
 	  <Copyright>2008-2024 CompuMaster GmbH</Copyright>
     <Authors>Jochen Wezel</Authors>
