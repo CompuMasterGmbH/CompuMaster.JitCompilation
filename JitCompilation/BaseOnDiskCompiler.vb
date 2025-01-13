@@ -9,7 +9,7 @@ Imports System.CodeDom.Compiler
 
 Namespace CompuMaster.JitCompilation
 
-    Public MustInherit Class BaseOnDiscCompiler
+    Public MustInherit Class BaseOnDiskCompiler
 
         Public Function Compile(ByVal sourceCode As String, ByVal debugMode As Boolean, ByVal outputAssemblyPath As String) As CompileResults
             Return Compile(sourceCode, New String() {}, debugMode, outputAssemblyPath)
@@ -28,48 +28,6 @@ Namespace CompuMaster.JitCompilation
         Protected MustOverride ReadOnly Property ImportDefaultSet() As CompuMaster.JitCompilation.Common.ImportSet
 
         Protected MustOverride Function CreateCodeProvider() As System.CodeDom.Compiler.CodeDomProvider
-
-    End Class
-
-    Public Class CSharpDiscCompiler
-        Inherits BaseOnDiscCompiler
-
-        Protected Overrides ReadOnly Property ReferenceDefaultSet() As Common.ReferenceSets
-            Get
-                Return Common.ReferenceSets.Minimal
-            End Get
-        End Property
-
-        Protected Overrides ReadOnly Property ImportDefaultSet() As Common.ImportSet
-            Get
-                Return CompuMaster.JitCompilation.Common.ImportSet.None
-            End Get
-        End Property
-
-        Protected Overrides Function CreateCodeProvider() As System.CodeDom.Compiler.CodeDomProvider
-            Return New Microsoft.CSharp.CSharpCodeProvider
-        End Function
-
-    End Class
-
-    Public Class VBNetOnDiscCompiler
-        Inherits BaseOnDiscCompiler
-
-        Protected Overrides ReadOnly Property ReferenceDefaultSet() As Common.ReferenceSets
-            Get
-                Return Common.ReferenceSets.Minimal
-            End Get
-        End Property
-
-        Protected Overrides ReadOnly Property ImportDefaultSet() As Common.ImportSet
-            Get
-                Return CompuMaster.JitCompilation.Common.ImportSet.Minimal
-            End Get
-        End Property
-
-        Protected Overrides Function CreateCodeProvider() As System.CodeDom.Compiler.CodeDomProvider
-            Return New Microsoft.VisualBasic.VBCodeProvider
-        End Function
 
     End Class
 

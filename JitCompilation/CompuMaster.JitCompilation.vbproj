@@ -45,13 +45,34 @@
     <Compile Update="CompileResults.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="InMemoryCompilers.vb">
+    <Compile Update="CSharpInMemoryCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="BaseInMemoryCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="VBNetInMemoryCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="JitCompilation.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="OnDiscCompilers.vb">
+    <Compile Update="BaseOnDiscCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="BaseOnDiskCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="VBNetOnDiscCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CSharpDiskCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CSharpDiscCompiler.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="VBNetOnDiskCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
