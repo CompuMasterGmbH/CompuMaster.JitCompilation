@@ -4,31 +4,20 @@
     <RootNamespace></RootNamespace>
 	  <TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0;net48;net461</TargetFrameworks>
 	  <AssemblyName>CompuMaster.JitCompilation</AssemblyName>
-	  <Copyright>2008-2024 CompuMaster GmbH</Copyright>
-    <Version>3.0.2024.1104</Version>
+    <Version>3.0.2025.0114</Version>
     <Authors>Jochen Wezel</Authors>
     <Company>CompuMaster GmbH</Company>
-    <Copyright>2008-2024 CompuMaster GmbH</Copyright>
+    <Copyright>2008-2025 CompuMaster GmbH</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://www.nuget.org/packages/CompuMaster.JitCompilation/</PackageProjectUrl>
     <PackageIcon>logo_64x64.png</PackageIcon>
-    <RepositoryUrl>https://github.com/CompuMasterGmbH/CompuMaster.JitCompilation.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags> CompuMaster Tools Compile Compiler JitCompilation CodeDom</PackageTags>
-    <PackageIconUrl />
+    <RepositoryUrl></RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageTags> CompuMaster;Tools;Compile;Compiler;JitCompilation;CodeDom;C#;VB.NET</PackageTags>
     <Configurations>Debug;Release;CI_CD</Configurations>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='CI_CD|netstandard2.0|AnyCPU'">
-    <OutputPath>bin\CI_CD\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <OutputPath>bin\Debug\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -87,6 +76,10 @@
     <None Include="..\logo_64x64.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

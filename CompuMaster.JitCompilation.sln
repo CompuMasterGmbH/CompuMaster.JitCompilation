@@ -1,12 +1,20 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29509.3
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDemoCSharp", "ConsoleAppDemoCSharp\ConsoleAppDemoCSharp.csproj", "{46D0AE0A-A5F0-4912-8E6C-0E978CE1BCBC}"
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompuMaster.JitCompilation", "JitCompilation\CompuMaster.JitCompilation.vbproj", "{091A640F-BBB7-4529-8044-71BFCABCAC55}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompuMaster.Test.JitCompilation", "Test.JitCompilation\CompuMaster.Test.JitCompilation.vbproj", "{CC9A59D1-C6D2-4A36-8DA4-451C77139CB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{A375DEEE-1C58-49AA-8A4C-B7E2EE6229C2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.github\workflows\BuildAndTest.yml = .github\workflows\BuildAndTest.yml
+		.github\workflows\PublishRelease.yml = .github\workflows\PublishRelease.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
