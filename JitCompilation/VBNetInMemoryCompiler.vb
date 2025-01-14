@@ -24,14 +24,31 @@ Namespace CompuMaster.JitCompilation
             End Get
         End Property
 
-        Protected Overloads Overrides Function EmbedFunctionIntoClass(ByVal [imports]() As String, ByVal functionCode As String) As String
-            'Given is a function code like the following one
-            '---------------------------------------
-            'Public Function Main(param1 as object)
-            '   'some code here...
-            '   Return param1
-            'End Function
-            '---------------------------------------
+        ''' <summary>
+        ''' Embed method code into the code of a class CompuMasterJitCompileTempClass
+        ''' </summary>
+        ''' <param name="[imports]">Namespaces which shall be imported</param>
+        ''' <param name="methodCode">Method code like <code>
+        ''' Public Function Main(param1 As Object) As Object
+        '''    'some code here...
+        '''    Return param1
+        ''' End Function</code></param>
+        ''' <returns></returns>
+        Protected Overrides Function EmbedCodeIntoClass(ByVal [imports]() As String, ByVal methodCode As String) As String
+            Return EmbedVbNetMethodIntoClass([imports], methodCode)
+        End Function
+
+        ''' <summary>
+        ''' Embed method code into the code of a class CompuMasterJitCompileTempClass
+        ''' </summary>
+        ''' <param name="[imports]">Namespaces which shall be imported</param>
+        ''' <param name="methodCode">Method code like <code>
+        ''' Public Function Main(param1 As Object) As Object
+        '''    'some code here...
+        '''    Return param1
+        ''' End Function</code></param>
+        ''' <returns></returns>
+        Friend Shared Function EmbedVbNetMethodIntoClass(ByVal [imports]() As String, ByVal methodCode As String) As String
             Dim ImportCommands As String = Nothing
             For Each importNamespace As String In [imports]
                 ImportCommands &= "Imports " & importNamespace & System.Environment.NewLine
@@ -40,7 +57,7 @@ Namespace CompuMaster.JitCompilation
                 ImportCommands & System.Environment.NewLine &
                 "Public Class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
                 System.Environment.NewLine &
-                functionCode & System.Environment.NewLine &
+                methodCode & System.Environment.NewLine &
                 System.Environment.NewLine &
                 "End Class"
         End Function

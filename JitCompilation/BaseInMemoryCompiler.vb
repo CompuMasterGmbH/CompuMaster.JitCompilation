@@ -28,7 +28,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         Public Function ExecuteMainMethod(ByVal methodCode As String, ByVal importNamespaces As String(), ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal ParamArray parameters As Object()) As Object
-            Return ExecuteClassWithMainMethod(EmbedFunctionIntoClass(importNamespaces, methodCode), additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", parameters)
+            Return ExecuteClassWithMainMethod(EmbedCodeIntoClass(importNamespaces, methodCode), additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", parameters)
         End Function
 
         Public Function ExecuteClassWithMainMethod(ByVal classCode As String, ByVal additionalAssembliesToReference As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal instanceName As String, ByVal ParamArray parameters As Object()) As Object
@@ -40,7 +40,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         Public Function ExecuteMethod(ByVal methodCode As String, ByVal importNamespaces As String(), ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
-            Return ExecuteClassWithMethod(EmbedFunctionIntoClass(importNamespaces, methodCode), additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", methodName, parameters)
+            Return ExecuteClassWithMethod(EmbedCodeIntoClass(importNamespaces, methodCode), additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", methodName, parameters)
         End Function
 
         Public Function ExecuteClassWithMethod(ByVal classCode As String, ByVal additionalAssembliesToReference As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal instanceName As String, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
@@ -48,13 +48,13 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Embeds a function code into a new class CompuMasterJitCompileTempClass to make it compilable
+        ''' Embeds method/property/enum/field code into a new class CompuMasterJitCompileTempClass to make it compilable
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <returns></returns>
         ''' <remarks>
         ''' </remarks>
-        Protected MustOverride Function EmbedFunctionIntoClass(ByVal [imports] As String(), ByVal functionCode As String) As String
+        Protected MustOverride Function EmbedCodeIntoClass(ByVal [imports] As String(), ByVal methodCode As String) As String
 
         Protected MustOverride ReadOnly Property ReferenceDefaultSet() As CompuMaster.JitCompilation.Common.ReferenceSets
 

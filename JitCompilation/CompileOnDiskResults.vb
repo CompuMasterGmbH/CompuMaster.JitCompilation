@@ -62,6 +62,31 @@ Namespace CompuMaster.JitCompilation
         ''' <returns></returns>
         Public ReadOnly Property OutputAssemblyPath As String
 
+        Public Function ExecuteMainMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteMainMethod(pathToAssemblyWithMainMethod, New String() {}, New String() {}, False, parameters)
+        End Function
+
+        Public Function ExecuteMainMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal importNamespaces As String(), ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteClassWithMainMethod(pathToAssemblyWithMainMethod, additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", parameters)
+        End Function
+
+        Public Function ExecuteClassWithMainMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal additionalAssembliesToReference As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal instanceName As String, ByVal ParamArray parameters As Object()) As Object
+            Return Me.InvokeMainMethod(instanceName, parameters)
+        End Function
+
+        Public Function ExecuteMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteMethod(pathToAssemblyWithMainMethod, New String() {}, New String() {}, False, methodName, parameters)
+        End Function
+
+        Public Function ExecuteMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal importNamespaces As String(), ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteClassWithMethod(pathToAssemblyWithMainMethod, additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", methodName, parameters)
+        End Function
+
+        Public Function ExecuteClassWithMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal additionalAssembliesToReference As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal instanceName As String, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
+            Return Me.Invoke(instanceName, methodName, parameters)
+        End Function
+
+
     End Class
 
 End Namespace

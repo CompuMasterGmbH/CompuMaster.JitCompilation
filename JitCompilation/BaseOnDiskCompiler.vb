@@ -24,6 +24,39 @@ Namespace CompuMaster.JitCompilation
             Return CType(Common.Compile(sourceCode, False, CreateCodeProvider, targetType, Common.AddMinimalSetOfReferences(Me.ReferenceDefaultSet, additionalAssembliesToReference), Common.AddMinimalSetOfImports(Me.ImportDefaultSet, [imports]), debugMode, outputAssemblyPath), CompileOnDiskResults)
         End Function
 
+        Public Function ExecuteMainMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal methodCode As String, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteMainMethod(pathToAssemblyWithMainMethod, methodCode, New String() {}, New String() {}, False, parameters)
+        End Function
+
+        Public Function ExecuteMainMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal methodCode As String, ByVal importNamespaces As String(), ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteClassWithMainMethod(pathToAssemblyWithMainMethod, EmbedCodeIntoClass(importNamespaces, methodCode), additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", parameters)
+        End Function
+
+        Public Function ExecuteClassWithMainMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal classCode As String, ByVal additionalAssembliesToReference As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal instanceName As String, ByVal ParamArray parameters As Object()) As Object
+            Return Compile(classCode, additionalAssembliesToReference, [imports], debugMode, pathToAssemblyWithMainMethod, Common.TargetType.Library).InvokeMainMethod(instanceName, parameters)
+        End Function
+
+        Public Function ExecuteMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal methodCode As String, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteMethod(pathToAssemblyWithMainMethod, methodCode, New String() {}, New String() {}, False, methodName, parameters)
+        End Function
+
+        Public Function ExecuteMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal methodCode As String, ByVal importNamespaces As String(), ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
+            Return ExecuteClassWithMethod(pathToAssemblyWithMainMethod, EmbedCodeIntoClass(importNamespaces, methodCode), additionalAssembliesToReference, New String() {}, debugMode, "CompuMasterJitCompileTempClass", methodName, parameters)
+        End Function
+
+        Public Function ExecuteClassWithMethod(ByVal pathToAssemblyWithMainMethod As String, ByVal classCode As String, ByVal additionalAssembliesToReference As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal instanceName As String, ByVal methodName As String, ByVal ParamArray parameters As Object()) As Object
+            Return Compile(classCode, additionalAssembliesToReference, [imports], debugMode, pathToAssemblyWithMainMethod, Common.TargetType.Library).Invoke(instanceName, methodName, parameters)
+        End Function
+
+        ''' <summary>
+        ''' Embeds method/property/enum/field code into a new class CompuMasterJitCompileTempClass to make it compilable
+        ''' </summary>
+        ''' <param name="methodCode"></param>
+        ''' <returns></returns>
+        ''' <remarks>
+        ''' </remarks>
+        Protected MustOverride Function EmbedCodeIntoClass(ByVal [imports] As String(), ByVal methodCode As String) As String
+
         Protected MustOverride ReadOnly Property ReferenceDefaultSet() As CompuMaster.JitCompilation.Common.ReferenceSets
 
         Protected MustOverride ReadOnly Property ImportDefaultSet() As CompuMaster.JitCompilation.Common.ImportSet

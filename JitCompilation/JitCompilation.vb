@@ -37,19 +37,19 @@ Namespace CompuMaster.JitCompilation
         ''' <summary>
         ''' Execute a C# function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <param name="parameters"></param>
         ''' <returns></returns>
-        Public Function ExecuteCSharpFunctionMain(ByVal functionCode As String, ByVal ParamArray parameters As Object()) As Object
-            Return CompileCSharpFunction(functionCode).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
+        Public Function ExecuteCSharpFunctionMain(ByVal methodCode As String, ByVal ParamArray parameters As Object()) As Object
+            Return CompileCSharpFunction(methodCode).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
         End Function
 
         ''' <summary>
         ''' Compile a C# function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <returns></returns>
-        Public Function CompileCSharpFunction(ByVal functionCode As String) As CompileResults
+        Public Function CompileCSharpFunction(ByVal methodCode As String) As CompileResults
             'Given is a function code like the following one
             '---------------------------------------
             'object Main(object param1)
@@ -61,7 +61,7 @@ Namespace CompuMaster.JitCompilation
             Dim MyTempClassCode As String =
                 "public class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
                 "{" & System.Environment.NewLine &
-                functionCode & System.Environment.NewLine &
+                methodCode & System.Environment.NewLine &
                 "}"
 
             Return CompileCSharp(MyTempClassCode, False)
@@ -92,19 +92,19 @@ Namespace CompuMaster.JitCompilation
         ''' <summary>
         ''' Execute a VB.NET function in memory
         ''' </summary>
-        ''' <param name="functionCode">A class implementing a method Main</param>
+        ''' <param name="methodCode">A class implementing a method Main</param>
         ''' <param name="parameters">Optional parameters required for the method Main</param>
         ''' <returns>The result value as is has been created by the method Main</returns>
-        Public Function ExecuteVbNetFunctionMain(ByVal functionCode As String, ByVal ParamArray parameters As Object()) As Object
-            Return CompileVbNetFunction(functionCode).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
+        Public Function ExecuteVbNetFunctionMain(ByVal methodCode As String, ByVal ParamArray parameters As Object()) As Object
+            Return CompileVbNetFunction(methodCode).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
         End Function
 
         ''' <summary>
         ''' Compile a VB.NET function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <returns></returns>
-        Public Function CompileVbNetFunction(ByVal functionCode As String) As CompileResults
+        Public Function CompileVbNetFunction(ByVal methodCode As String) As CompileResults
             'Given is a function code like the following one
             '---------------------------------------
             'Public Function Main(param1 as object)
@@ -115,7 +115,7 @@ Namespace CompuMaster.JitCompilation
             Dim MyTempClassCode As String =
                 "Public Class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
                 System.Environment.NewLine &
-                functionCode & System.Environment.NewLine &
+                methodCode & System.Environment.NewLine &
                 System.Environment.NewLine &
                 "End Class"
             Return CompileVbNet(MyTempClassCode, False)
@@ -186,35 +186,22 @@ Namespace CompuMaster.JitCompilation
         ''' <summary>
         ''' Execute a C# function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <param name="outputAssemblyPath"></param>
         ''' <param name="parameters">Optional parameters required for the method Main</param>
         ''' <returns>The result value as is has been created by the method Main</returns>
-        Public Function ExecuteCSharpFunctionMain(ByVal functionCode As String, ByVal outputAssemblyPath As String, ByVal ParamArray parameters As Object()) As Object
-            Return CompileCSharpFunction(functionCode, outputAssemblyPath).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
+        Public Function ExecuteCSharpFunctionMain(ByVal methodCode As String, ByVal outputAssemblyPath As String, ByVal ParamArray parameters As Object()) As Object
+            Return CompileCSharpFunction(methodCode, outputAssemblyPath).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
         End Function
 
         ''' <summary>
         ''' Compile a C# function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <param name="outputAssemblyPath"></param>
         ''' <returns></returns>
-        Public Function CompileCSharpFunction(ByVal functionCode As String, ByVal outputAssemblyPath As String) As CompileResults
-            'Given is a function code like the following one
-            '---------------------------------------
-            'object Main(object param1)
-            '{
-            '   'some code here...
-            '   return param1;
-            '}
-            '---------------------------------------
-            Dim MyTempClassCode As String =
-                "public class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
-                "{" & System.Environment.NewLine &
-                functionCode & System.Environment.NewLine &
-                "}"
-
+        Public Function CompileCSharpFunction(ByVal methodCode As String, ByVal outputAssemblyPath As String) As CompileResults
+            Dim MyTempClassCode As String = CSharpInMemoryCompiler.EmbedCSharpMethodIntoClass(New String() {}, methodCode)
             Return CompileCSharp(MyTempClassCode, outputAssemblyPath)
         End Function
 
@@ -265,12 +252,12 @@ Namespace CompuMaster.JitCompilation
         ''' <summary>
         ''' Execute a VB.NET function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <param name="outputAssemblyPath"></param>
         ''' <param name="parameters">Optional parameters required for the method Main</param>
         ''' <returns>The result value as is has been created by the method Main</returns>
-        Public Function ExecuteVbNetFunctionMain(ByVal functionCode As String, ByVal outputAssemblyPath As String, ByVal ParamArray parameters As Object()) As Object
-            Return CompileVbNetFunction(functionCode, outputAssemblyPath).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
+        Public Function ExecuteVbNetFunctionMain(ByVal methodCode As String, ByVal outputAssemblyPath As String, ByVal ParamArray parameters As Object()) As Object
+            Return CompileVbNetFunction(methodCode, outputAssemblyPath).InvokeMainMethod("CompuMasterJitCompileTempClass", parameters)
         End Function
 
         Public Function ExecuteVbNetClassWithFunctionMain(ByVal classCode As String, ByVal additionalAssembliesToReference As String(), ByVal outputAssemblyPath As String, ByVal ParamArray parameters As Object()) As Object
@@ -280,23 +267,11 @@ Namespace CompuMaster.JitCompilation
         ''' <summary>
         ''' Compile a VB.NET function in memory
         ''' </summary>
-        ''' <param name="functionCode"></param>
+        ''' <param name="methodCode"></param>
         ''' <param name="outputAssemblyPath"></param>
         ''' <returns></returns>
-        Public Function CompileVbNetFunction(ByVal functionCode As String, ByVal outputAssemblyPath As String) As CompileResults
-            'Given is a function code like the following one
-            '---------------------------------------
-            'Public Function Main(param1 as object)
-            '   'some code here...
-            '   Return param1
-            'End Function
-            '---------------------------------------
-            Dim MyTempClassCode As String =
-                "Public Class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
-                System.Environment.NewLine &
-                functionCode & System.Environment.NewLine &
-                System.Environment.NewLine &
-                "End Class"
+        Public Function CompileVbNetFunction(ByVal methodCode As String, ByVal outputAssemblyPath As String) As CompileResults
+            Dim MyTempClassCode As String = VBNetInMemoryCompiler.EmbedVbNetMethodIntoClass(New String() {}, methodCode)
             Return CompileVbNet(MyTempClassCode, outputAssemblyPath)
         End Function
 

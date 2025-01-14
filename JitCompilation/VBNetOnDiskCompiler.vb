@@ -24,6 +24,20 @@ Namespace CompuMaster.JitCompilation
             End Get
         End Property
 
+        ''' <summary>
+        ''' Embed method code into the code of a class CompuMasterJitCompileTempClass
+        ''' </summary>
+        ''' <param name="[imports]">Namespaces which shall be imported</param>
+        ''' <param name="methodCode">Method code like <code>
+        ''' Public Function Main(param1 As Object) As Object
+        '''    'some code here...
+        '''    Return param1
+        ''' End Function</code></param>
+        ''' <returns></returns>
+        Protected Overrides Function EmbedCodeIntoClass(ByVal [imports]() As String, ByVal methodCode As String) As String
+            Return VBNetInMemoryCompiler.EmbedVbNetMethodIntoClass([imports], methodCode)
+        End Function
+
         Protected Overrides Function CreateCodeProvider() As System.CodeDom.Compiler.CodeDomProvider
             Return New Microsoft.VisualBasic.VBCodeProvider
         End Function
