@@ -3,21 +3,28 @@ Option Strict On
 
 Imports System.CodeDom.Compiler
 
-'TODO: XML documentation
-'TODO: create NUnit Test class for all methods with 0, 1 and 2 parameters for the called method
-'TODO: validate proper operation in all .NET framework environments (.NET 1.x up to the highest version)
-
 Namespace CompuMaster.JitCompilation
 
+    ''' <summary>
+    ''' Compile a piece of VB.NET source code for execution in memory
+    ''' </summary>
     Public Class VBNetInMemoryCompiler
         Inherits BaseInMemoryCompiler
 
+        ''' <summary>
+        ''' Default set of references for VB.NET
+        ''' </summary>
+        ''' <returns></returns>
         Protected Overrides ReadOnly Property ReferenceDefaultSet() As Common.ReferenceSets
             Get
                 Return Common.ReferenceSets.Minimal
             End Get
         End Property
 
+        ''' <summary>
+        ''' Default set of namespace imports for VB.NET
+        ''' </summary>
+        ''' <returns></returns>
         Protected Overrides ReadOnly Property ImportDefaultSet() As Common.ImportSet
             Get
                 Return CompuMaster.JitCompilation.Common.ImportSet.Minimal
@@ -62,6 +69,10 @@ Namespace CompuMaster.JitCompilation
                 "End Class"
         End Function
 
+        ''' <summary>
+        ''' Create a new instance of the VB.NET code provider
+        ''' </summary>
+        ''' <returns></returns>
         Protected Overrides Function CreateCodeProvider() As System.CodeDom.Compiler.CodeDomProvider
             Return New Microsoft.VisualBasic.VBCodeProvider
         End Function

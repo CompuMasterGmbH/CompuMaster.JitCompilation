@@ -5,8 +5,11 @@ Imports System.Security.Permissions
 Imports System.Globalization
 Imports System.CodeDom.Compiler
 
+''' <summary>
+''' Represents an exception that occurs during compilation of source code
+''' </summary>
 #If NETFRAMEWORK Then
-<Serializable(), AspNetHostingPermission(SecurityAction.LinkDemand, Level:=AspNetHostingPermissionLevel.Minimal)> 
+<Serializable(), AspNetHostingPermission(SecurityAction.LinkDemand, Level:=AspNetHostingPermissionLevel.Minimal)>
 Public NotInheritable Class CompileException
 #Else
 <Serializable()>
@@ -24,6 +27,10 @@ Public NotInheritable Class CompileException
         Me._hideSourceCodeFilePathsInExceptionMessages = hideSourceCodeFilePathsInExceptionMessages
     End Sub
 
+    ''' <summary>
+    ''' Returns the first compilation error
+    ''' </summary>
+    ''' <returns></returns>
     Friend ReadOnly Property FirstCompileError() As CompilerError
         Get
             If ((Me._results Is Nothing) OrElse Not Me._results.Errors.HasErrors) Then
@@ -38,6 +45,10 @@ Public NotInheritable Class CompileException
         End Get
     End Property
 
+    ''' <summary>
+    ''' Returns the first error message
+    ''' </summary>
+    ''' <returns></returns>
     Public Overrides ReadOnly Property Message() As String
         Get
             Dim firstCompileError As CompilerError = Me.FirstCompileError
@@ -52,10 +63,14 @@ Public NotInheritable Class CompileException
         End Get
     End Property
 
+    ''' <summary>
+    ''' Returns all errors and warnings as formatted strings
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property ErrorsAndWarnings() As String()
         Get
             If Me._results Is Nothing OrElse Me._results.Errors Is Nothing Then Return New String() {}
-            Dim Result As New ArrayList
+            Dim Result As New List(Of String)
             For Each err As CompilerError In Me._results.Errors
                 If err.IsWarning = False Then
                     Result.Add("ERROR: " & FormattedError(err))
@@ -63,33 +78,41 @@ Public NotInheritable Class CompileException
                     Result.Add("WARNING: " & FormattedError(err))
                 End If
             Next
-            Return CType(Result.ToArray(GetType(String)), String())
+            Return Result.ToArray
         End Get
     End Property
 
+    ''' <summary>
+    ''' Returns all errors as formatted strings
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property Errors() As String()
         Get
             If Me._results Is Nothing OrElse Me._results.Errors Is Nothing Then Return New String() {}
-            Dim Result As New ArrayList
+            Dim Result As New List(Of String)
             For Each err As CompilerError In Me._results.Errors
                 If err.IsWarning = False Then
                     Result.Add(FormattedError(err))
                 End If
             Next
-            Return CType(Result.ToArray(GetType(String)), String())
+            Return Result.ToArray
         End Get
     End Property
 
+    ''' <summary>
+    ''' Returns all warnings as formatted strings
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property Warnings() As String()
         Get
             If Me._results Is Nothing OrElse Me._results.Errors Is Nothing Then Return New String() {}
-            Dim Result As New ArrayList
+            Dim Result As New List(Of String)
             For Each err As CompilerError In Me._results.Errors
                 If err.IsWarning Then
                     Result.Add(FormattedError(err))
                 End If
             Next
-            Return CType(Result.ToArray(GetType(String)), String())
+            Return Result.ToArray
         End Get
     End Property
 

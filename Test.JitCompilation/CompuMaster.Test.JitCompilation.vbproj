@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <RootNamespace></RootNamespace>
-	  <TargetFrameworks>netcoreapp3.1;net8.0;net48;net461</TargetFrameworks>
+	  <TargetFrameworks>netcoreapp3.1;net8.0;net9.0;net48;net461</TargetFrameworks>
 	  <AssemblyName>CompuMaster.Test.JitCompilation</AssemblyName>
 	  <Copyright>2008-2024 CompuMaster GmbH</Copyright>
     <Authors>Jochen Wezel</Authors>
@@ -37,6 +37,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="JitCompilationConsoleDemo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CommonOnDiskCompilerTest.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="VBOnDiskCompilerTest.vb">

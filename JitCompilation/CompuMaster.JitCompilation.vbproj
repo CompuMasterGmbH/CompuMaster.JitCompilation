@@ -42,6 +42,9 @@
     <Compile Update="CompileException.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ExecuteConsoleAppResult.vb">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="CompileOnDiskResults.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -60,19 +63,19 @@
     <Compile Update="JitCompilation.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="BaseOnDiscCompiler.vb">
+    <Compile Update="Legacy-Obsolete\BaseOnDiscCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="BaseOnDiskCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="VBNetOnDiscCompiler.vb">
+    <Compile Update="Legacy-Obsolete\VBNetOnDiscCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CSharpDiskCompiler.vb">
+    <Compile Update="CSharpOnDiskCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CSharpDiscCompiler.vb">
+    <Compile Update="Legacy-Obsolete\CSharpDiscCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="VBNetOnDiskCompiler.vb">

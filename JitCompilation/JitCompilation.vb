@@ -3,10 +3,6 @@ Option Strict On
 
 Imports System.CodeDom.Compiler
 
-'TODO: XML documentation
-'TODO: create NUnit Test class for all methods with 0, 1 and 2 parameters for the called method
-'TODO: validate proper operation in all .NET framework environments (.NET 1.x up to the highest version)
-
 Namespace CompuMaster.JitCompilation
 
     ''' <summary>
@@ -102,16 +98,13 @@ Namespace CompuMaster.JitCompilation
         ''' <summary>
         ''' Compile a VB.NET function in memory
         ''' </summary>
-        ''' <param name="methodCode"></param>
+        ''' <param name="methodCode">Method code like <code>
+        ''' Public Function Main(param1 As Object) As Object
+        '''    //some code here...
+        '''    Return param1
+        ''' End Function</code></param>
         ''' <returns></returns>
         Public Function CompileVbNetFunction(ByVal methodCode As String) As CompileResults
-            'Given is a function code like the following one
-            '---------------------------------------
-            'Public Function Main(param1 as object)
-            '   'some code here...
-            '   Return param1
-            'End Function
-            '---------------------------------------
             Dim MyTempClassCode As String =
                 "Public Class CompuMasterJitCompileTempClass" & System.Environment.NewLine &
                 System.Environment.NewLine &
@@ -171,7 +164,7 @@ Namespace CompuMaster.JitCompilation
         ''' <param name="outputAssemblyPath"></param>
         ''' <returns></returns>
         Public Function CompileCSharp(ByVal sourceCode As String, ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal outputAssemblyPath As String) As CompileResults
-            Dim refs As New ArrayList
+            Dim refs As New List(Of String)
             For Each ref As String In CompuMaster.JitCompilation.Common.ReferenceDefaults(CompuMaster.JitCompilation.Common.ReferenceSets.Minimal)
                 refs.Add(ref)
             Next
@@ -180,7 +173,7 @@ Namespace CompuMaster.JitCompilation
                     refs.Add(assemblyPath)
                 Next
             End If
-            Return Compile(sourceCode, New Microsoft.CSharp.CSharpCodeProvider, CompuMaster.JitCompilation.Common.TargetType.Library, CType(refs.ToArray(GetType(String)), String()), CompuMaster.JitCompilation.Common.ImportDefaults(CompuMaster.JitCompilation.Common.ImportSet.None), False, outputAssemblyPath)
+            Return Compile(sourceCode, New Microsoft.CSharp.CSharpCodeProvider, CompuMaster.JitCompilation.Common.TargetType.Library, refs.ToArray, CompuMaster.JitCompilation.Common.ImportDefaults(CompuMaster.JitCompilation.Common.ImportSet.None), False, outputAssemblyPath)
         End Function
 
         ''' <summary>
@@ -237,7 +230,7 @@ Namespace CompuMaster.JitCompilation
         ''' <param name="outputAssemblyPath"></param>
         ''' <returns></returns>
         Public Function CompileVbNet(ByVal sourceCode As String, ByVal additionalAssembliesToReference As String(), ByVal debugMode As Boolean, ByVal outputAssemblyPath As String) As CompileResults
-            Dim refs As New ArrayList
+            Dim refs As New List(Of String)
             For Each ref As String In CompuMaster.JitCompilation.Common.ReferenceDefaults(CompuMaster.JitCompilation.Common.ReferenceSets.Minimal)
                 refs.Add(ref)
             Next
@@ -246,7 +239,7 @@ Namespace CompuMaster.JitCompilation
                     refs.Add(assemblyPath)
                 Next
             End If
-            Return Compile(sourceCode, New Microsoft.VisualBasic.VBCodeProvider, CompuMaster.JitCompilation.Common.TargetType.Library, CType(refs.ToArray(GetType(String)), String()), CompuMaster.JitCompilation.Common.ImportDefaults(CompuMaster.JitCompilation.Common.ImportSet.Minimal), False, outputAssemblyPath)
+            Return Compile(sourceCode, New Microsoft.VisualBasic.VBCodeProvider, CompuMaster.JitCompilation.Common.TargetType.Library, refs.ToArray, CompuMaster.JitCompilation.Common.ImportDefaults(CompuMaster.JitCompilation.Common.ImportSet.Minimal), False, outputAssemblyPath)
         End Function
 
         ''' <summary>
