@@ -78,7 +78,6 @@ Namespace CompuMaster.JitCompilation
             [Module] = 3
         End Enum
 
-        ''' -----------------------------------------------------------------------------
         ''' <summary>
         ''' Compile some source code in memory
         ''' </summary>
@@ -90,13 +89,6 @@ Namespace CompuMaster.JitCompilation
         ''' <param name="debugMode"></param>
         ''' <param name="outputAssemblyPath">An output path for the created assembly or null (Nothing in VisualBasic) to compile in-memory</param>
         ''' <returns></returns>
-        ''' <remarks>
-        ''' </remarks>
-        ''' <history>
-        ''' 	[wezel]	    23.01.2008	Created
-        '''     [zeutzheim] 08.07.2009  Modified
-        ''' </history>
-        ''' -----------------------------------------------------------------------------
         Friend Shared Function Compile(ByVal sourceCode As String, ByVal hideSourceCodeFilePathsInExceptionMessages As Boolean, ByVal codeProvider As System.CodeDom.Compiler.CodeDomProvider, ByVal targetType As CompuMaster.JitCompilation.Common.TargetType, ByVal references As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal outputAssemblyPath As String) As CompileResults
 
             'Parameter validation
@@ -125,11 +117,11 @@ Namespace CompuMaster.JitCompilation
                 If references(MyCounter) <> Nothing Then oCParams.ReferencedAssemblies.Add(references(MyCounter))
             Next
             Select Case targetType
-                Case targetType.Module
+                Case TargetType.Module
                     oCParams.CompilerOptions = "/t:module"
-                Case targetType.ConsoleApplication
+                Case TargetType.ConsoleApplication
                     oCParams.CompilerOptions = "/t:exe"
-                Case targetType.WindowsApplication
+                Case TargetType.WindowsApplication
                     oCParams.CompilerOptions = "/t:winexe"
                 Case Else
                     oCParams.CompilerOptions = "/t:library"
@@ -157,15 +149,16 @@ Namespace CompuMaster.JitCompilation
             oCResults = oICCompiler.CompileAssemblyFromSource(oCParams, sourceCode)
 
             ' Check for compile time errors 
-            Dim Result As CompileResults
             If oCResults.Errors.Count <> 0 Then
                 Throw New CompileException(oCResults, sourceCode, hideSourceCodeFilePathsInExceptionMessages)
             Else
                 ' No Errors On Compile, at maximum a few Warnings, so continue to process...
-                Result = New CompileResults(oCResults.CompiledAssembly, Nothing)
+                If outputAssemblyPath = Nothing Then
+                    Return New CompileResults(oCResults.CompiledAssembly, oCResults)
+                Else
+                    Return New CompileOnDiskResults(oCResults.CompiledAssembly, outputAssemblyPath, oCResults)
+                End If
             End If
-
-            Return Result
 
         End Function
 

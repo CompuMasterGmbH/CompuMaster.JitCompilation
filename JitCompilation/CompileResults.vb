@@ -19,18 +19,18 @@ Namespace CompuMaster.JitCompilation
             _Assembly = [assembly]
         End Sub
 
-        Private _CompilerResults As CompilerResults
-        Public ReadOnly Property CompilerResults() As CompilerResults
+        Private _CompilerResults As System.CodeDom.Compiler.CompilerResults
+        Public ReadOnly Property CompilerResults() As System.CodeDom.Compiler.CompilerResults
             Get
                 Return _CompilerResults
             End Get
         End Property
 
-        Public ReadOnly Property CompilerErrors() As CompilerErrorCollection
+        Public ReadOnly Property CompilerErrors() As System.CodeDom.Compiler.CompilerErrorCollection
             Get
                 If _CompilerResults Is Nothing Then
                     'Return empty collection (to prevent ObjectReference-Null-Exceptions
-                    Return New CompilerErrorCollection
+                    Return New System.CodeDom.Compiler.CompilerErrorCollection
                 Else
                     Return _CompilerResults.Errors
                 End If

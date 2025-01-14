@@ -312,8 +312,9 @@ Namespace CompuMaster.JitCompilation
         ''' <param name="imports"></param>
         ''' <param name="debugMode"></param>
         ''' <returns></returns>
-        Public Function Compile(ByVal sourceCode As String, ByVal codeProvider As System.CodeDom.Compiler.CodeDomProvider, ByVal targetType As CompuMaster.JitCompilation.Common.TargetType, ByVal references As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal outputAssemblyPath As String) As CompileResults
-            Return Common.Compile(sourceCode, False, codeProvider, targetType, references, [imports], debugMode, outputAssemblyPath)
+        Public Function Compile(ByVal sourceCode As String, ByVal codeProvider As System.CodeDom.Compiler.CodeDomProvider, ByVal targetType As CompuMaster.JitCompilation.Common.TargetType, ByVal references As String(), ByVal [imports] As String(), ByVal debugMode As Boolean, ByVal outputAssemblyPath As String) As CompileOnDiskResults
+            If outputAssemblyPath = Nothing Then Throw New ArgumentNullException(NameOf(outputAssemblyPath))
+            Return CType(Common.Compile(sourceCode, False, codeProvider, targetType, references, [imports], debugMode, outputAssemblyPath), CompileOnDiskResults)
         End Function
 
     End Class

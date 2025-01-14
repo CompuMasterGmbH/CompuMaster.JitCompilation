@@ -42,6 +42,9 @@
     <Compile Update="CompileException.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CompileOnDiskResults.vb">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="CompileResults.vb">
       <SubType>Code</SubType>
     </Compile>
