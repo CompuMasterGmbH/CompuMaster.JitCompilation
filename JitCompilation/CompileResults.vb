@@ -9,20 +9,9 @@ Imports System.CodeDom.Compiler
 
 Namespace CompuMaster.JitCompilation
 
-    ''' -----------------------------------------------------------------------------
-    ''' Project	 : CompuMaster.JitCompilation
-    ''' Class	 : JitCompilation.CompileResults
-    ''' 
-    ''' -----------------------------------------------------------------------------
     ''' <summary>
     ''' A compilation result for access to the compiled assembly or compilation errors
     ''' </summary>
-    ''' <remarks>
-    ''' </remarks>
-    ''' <history>
-    ''' 	[wezel]	23.01.2008	Created
-    ''' </history>
-    ''' -----------------------------------------------------------------------------
     Public Class CompileResults
 
         Friend Sub New(ByVal [assembly] As System.Reflection.Assembly, ByVal compilerResults As CompilerResults)

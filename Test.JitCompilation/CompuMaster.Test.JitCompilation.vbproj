@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CompuMaster.IO.TemporaryFile" Version="2024.12.24.100" />
     <PackageReference Include="CompuMaster.VisualBasicCompatibility" Version="1.0.6" />
     <PackageReference Include="JUnitTestLogger4GitHub" Version="1.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
@@ -29,10 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="CSharpOnDiskCompilerTest.vb">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="CSharpInMemoryCompilerTest.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="JitCompilationConsoleDemo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="VBOnDiskCompilerTest.vb">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="VBInMemoryCompilerTest.vb">
