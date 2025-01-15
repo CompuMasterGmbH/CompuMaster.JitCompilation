@@ -211,7 +211,9 @@ Namespace CompuMaster.JitCompilation
             End If
 
             ' Obsolete in 2.0 framework
+#Disable Warning BC40000 ' Typ oder Element ist veraltet
             Dim oICCompiler As ICodeCompiler = codeProvider.CreateCompiler
+#Enable Warning BC40000 ' Typ oder Element ist veraltet
 
             Dim oCParams As CompilerParameters = New CompilerParameters
             Dim oCResults As CompilerResults
