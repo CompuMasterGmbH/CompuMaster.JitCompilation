@@ -114,6 +114,12 @@ Namespace CompuMaster.Tests.JitCompilation
             Assert.That(RunResult.StandardOutput.ToString, [Does].Contain("Hello World!"))
             Assert.That(RunResult.StandardOutput.ToString, [Does].Contain("There are 2 arguments given."), "Intended commandline arguments: " & String.Join(" ", TestAppSources.CommandLineParameters))
             Assert.That(RunResult.StandardErrorOutput.Length, [Is].Zero)
+
+            Dim RunSeparateExeResult As ExecuteConsoleAppResult = CompileOnDiskResults.ExecuteConsoleAppFromDisk(OutputAssemblyPath.FilePath, TestAppSources.CommandLineParameters.ToArray)
+            Assert.That(RunResult.ExitCode, [Is].Zero())
+            Assert.That(RunResult.StandardOutput.ToString, [Does].Contain("Hello World!"))
+            Assert.That(RunResult.StandardOutput.ToString, [Does].Contain("There are 2 arguments given."), "Intended commandline arguments: " & String.Join(" ", TestAppSources.CommandLineParameters))
+            Assert.That(RunResult.StandardErrorOutput.Length, [Is].Zero)
         End Sub
 
         <Test>
