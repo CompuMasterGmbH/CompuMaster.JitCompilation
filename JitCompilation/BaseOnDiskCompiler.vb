@@ -69,7 +69,7 @@ Namespace CompuMaster.JitCompilation
         End Sub
 
         ''' <summary>
-        ''' Invoke/execute the Main method in an assembly
+        ''' Compile code of a class to an assembly and invoke method Main of it 
         ''' </summary>
         ''' <param name="pathToAssemblyWithMainMethod"></param>
         ''' <param name="methodCode"></param>
@@ -80,7 +80,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute the Main method in an assembly
+        ''' Compile code of a class to an assembly and invoke method Main of it 
         ''' </summary>
         ''' <param name="pathToAssemblyWithMainMethod"></param>
         ''' <param name="methodCode"></param>
@@ -94,7 +94,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute the Main method in an assembly
+        ''' Compile code of a class to an assembly and invoke method Main of it 
         ''' </summary>
         ''' <param name="pathToAssemblyWithMainMethod"></param>
         ''' <param name="classCode"></param>
@@ -109,7 +109,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute a method of a class in an assembly
+        ''' Compile code of a class to an assembly and invoke a method of it 
         ''' </summary>
         ''' <param name="pathToAssemblyWithMainMethod"></param>
         ''' <param name="methodCode"></param>
@@ -121,7 +121,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute a method of a class in an assembly
+        ''' Compile code of a class to an assembly and invoke a method of it 
         ''' </summary>
         ''' <param name="pathToAssemblyWithMainMethod"></param>
         ''' <param name="methodCode"></param>
@@ -136,7 +136,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute a method of a class in an assembly
+        ''' Compile code of a class to an assembly and invoke a method of it 
         ''' </summary>
         ''' <param name="pathToAssemblyWithMainMethod"></param>
         ''' <param name="classCode"></param>

@@ -45,7 +45,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute the Main method in an assembly
+        ''' Compile code of a class to an assembly and invoke method Main of it 
         ''' </summary>
         ''' <param name="methodCode"></param>
         ''' <param name="parameters"></param>
@@ -55,7 +55,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute the Main method in an assembly
+        ''' Compile code of a class to an assembly and invoke method Main of it 
         ''' </summary>
         ''' <param name="methodCode"></param>
         ''' <param name="importNamespaces"></param>
@@ -68,7 +68,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute the Main method in an assembly
+        ''' Compile code of a class to an assembly and invoke method Main of it 
         ''' </summary>
         ''' <param name="classCode"></param>
         ''' <param name="additionalAssembliesToReference"></param>
@@ -82,7 +82,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute a method of a class in an assembly
+        ''' Compile code of a class to an assembly and invoke a method of it 
         ''' </summary>
         ''' <param name="methodCode"></param>
         ''' <param name="methodName"></param>
@@ -93,7 +93,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute a method of a class in an assembly
+        ''' Compile code of a class to an assembly and invoke a method of it 
         ''' </summary>
         ''' <param name="methodCode"></param>
         ''' <param name="importNamespaces"></param>
@@ -107,7 +107,7 @@ Namespace CompuMaster.JitCompilation
         End Function
 
         ''' <summary>
-        ''' Invoke/execute a method of a class in an assembly
+        ''' Compile code of a class to an assembly and invoke a method of it 
         ''' </summary>
         ''' <param name="classCode"></param>
         ''' <param name="additionalAssembliesToReference"></param>
