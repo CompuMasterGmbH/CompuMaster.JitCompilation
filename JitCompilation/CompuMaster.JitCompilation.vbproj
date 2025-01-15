@@ -48,9 +48,6 @@
     <Compile Update="VBNetInMemoryCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="JitCompilation.vb">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Legacy-Obsolete\BaseOnDiscCompiler.vb">
       <SubType>Code</SubType>
     </Compile>
