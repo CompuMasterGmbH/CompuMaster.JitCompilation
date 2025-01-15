@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <RootNamespace></RootNamespace>
@@ -11,9 +11,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://www.nuget.org/packages/CompuMaster.JitCompilation/</PackageProjectUrl>
     <PackageIcon>logo_64x64.png</PackageIcon>
-    <RepositoryUrl></RepositoryUrl>
-    <RepositoryType></RepositoryType>
-    <PackageTags>CompuMaster;Tools;Compile;Compiler;JitCompilation;CodeDom;C#;VB.NET</PackageTags>
+    <Description>CompuMaster.JitCompilation is a library for just-in-time compilation of C# and VB.NET code allowing dynamic code execution from in-memory assemblies or from on-disk assemblies</Description>
+    <PackageTags>CompuMaster;Tools;Compile;Compiler;JitCompilation;CodeDom;C#;CSharp;Dynamic;Code;Just-in-timeVB.NET</PackageTags>
     <Configurations>Debug;Release;CI_CD</Configurations>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeSymbols>True</IncludeSymbols>
