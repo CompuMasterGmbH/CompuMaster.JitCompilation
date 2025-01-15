@@ -24,7 +24,13 @@ Namespace CompuMaster.JitCompilation
         ''' </summary>
         ''' <param name="outputAssemblyPath"></param>
         Friend Sub New(outputAssemblyPath As String)
+#If NETFRAMEWORK Then
             MyBase.New(System.Reflection.Assembly.LoadFrom(outputAssemblyPath), Nothing)
+#ElseIf NET Or NETCOREAPP Then
+            MyBase.New(System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(outputAssemblyPath), Nothing)
+#Else 'NETSTANDARD or other
+            MyBase.New(AppDomain.CurrentDomain.Load(System.IO.File.ReadAllBytes(outputAssemblyPath)), Nothing)
+#End If
             If outputAssemblyPath = Nothing Then Throw New ArgumentNullException(NameOf(outputAssemblyPath))
             Me.OutputAssemblyPath = outputAssemblyPath
         End Sub
