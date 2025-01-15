@@ -300,7 +300,12 @@ Namespace CompuMaster.JitCompilation
 
         End Function
 
-
+        ''' <summary>
+        ''' Create a string array with minimal set of referenced assemblies
+        ''' </summary>
+        ''' <param name="baseSetOfReferences"></param>
+        ''' <param name="additionalAssembliesToReference"></param>
+        ''' <returns></returns>
         Public Shared Function AddMinimalSetOfReferences(ByVal baseSetOfReferences As ReferenceSets, ByVal additionalAssembliesToReference() As String) As String()
             Dim refs As New List(Of String)
             For Each ref As String In CompuMaster.JitCompilation.Common.ReferenceDefaults(baseSetOfReferences)
@@ -314,6 +319,12 @@ Namespace CompuMaster.JitCompilation
             Return refs.ToArray
         End Function
 
+        ''' <summary>
+        ''' Create a string array with minimal set of namespace imports
+        ''' </summary>
+        ''' <param name="baseSetOfImports"></param>
+        ''' <param name="additionalImports"></param>
+        ''' <returns></returns>
         Public Shared Function AddMinimalSetOfImports(ByVal baseSetOfImports As ImportSet, ByVal additionalImports() As String) As String()
             Dim [imports] As New List(Of String)
             For Each import As String In CompuMaster.JitCompilation.Common.ImportDefaults(baseSetOfImports)
