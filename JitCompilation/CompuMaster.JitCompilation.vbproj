@@ -4,10 +4,10 @@
     <RootNamespace></RootNamespace>
 	  <TargetFrameworks>netstandard2.0;net6.0;net9.0;net461</TargetFrameworks>
 	  <AssemblyName>CompuMaster.JitCompilation</AssemblyName>
-    <Version>3.0.2025.0115</Version>
+    <Version>3.0.2026.1112</Version>
     <Authors>Jochen Wezel</Authors>
     <Company>CompuMaster GmbH</Company>
-    <Copyright>2008-2025 CompuMaster GmbH</Copyright>
+    <Copyright>2008-2026 CompuMaster GmbH</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://www.nuget.org/packages/CompuMaster.JitCompilation/</PackageProjectUrl>
     <PackageIcon>logo_64x64.png</PackageIcon>
